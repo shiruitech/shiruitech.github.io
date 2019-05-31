@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-seewo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-seewo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-seewo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="后台,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。">
+<meta name="keywords" content="后台">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对象属性拷贝工具的选择">
+<meta property="og:url" content="http://yoursite.com/2019/03/29/对象属性拷贝工具的选择/index.html">
+<meta property="og:site_name" content="视睿团队技术博客">
+<meta property="og:description" content="日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4e1da89.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4e06f29.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4d6f96f.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4d8c676.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4d95f39.png">
+<meta property="og:image" content="https://i.loli.net/2019/03/29/5c9d7c4d864a8.png">
+<meta property="og:updated_time" content="2019-05-23T01:08:57.665Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对象属性拷贝工具的选择">
+<meta name="twitter:description" content="日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。">
+<meta name="twitter:image" content="https://i.loli.net/2019/03/29/5c9d7c4e1da89.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/29/对象属性拷贝工具的选择/">
+
+
+
+
+
+  <title>对象属性拷贝工具的选择 | 视睿团队技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">视睿团队技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端，后台，移动开发，Windows，C++，AI，大数据，QA</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/对象属性拷贝工具的选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="视睿科技">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="视睿团队技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">对象属性拷贝工具的选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T09:14:07+08:00">
+                2019-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> 鸡杂王</span> 
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/后台/" itemprop="url" rel="index">
+                    <span itemprop="name">后台</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/29/对象属性拷贝工具的选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/对象属性拷贝工具的选择/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <blockquote>
+<p>日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。</p>
+</blockquote>
+<h2 id="用什么工具？"><a href="#用什么工具？" class="headerlink" title="用什么工具？"></a>用什么工具？</h2><blockquote>
+<p>目前主流的方式大概有三种</p>
+</blockquote>
+<h3 id="反射设置类属性"><a href="#反射设置类属性" class="headerlink" title="反射设置类属性"></a>反射设置类属性</h3><p>以BeanUtil为例，我们只需把两个对象的引用传入进去，工具通过反射的原理拷贝对象的值。一键完成。</p>
+<h3 id="注解驱动代码生成"><a href="#注解驱动代码生成" class="headerlink" title="注解驱动代码生成"></a>注解驱动代码生成</h3><p>类似MapStruct(原理类似Lombok)，添加一些注解比如 @Mapper<br>Java的Annotation Processor 会自动帮这个接口生成一个实现类，根据方法签名帮你写好这部分代码。你只需调用这个接口就可以完成类的转换</p>
+<h3 id="生成动态代理类"><a href="#生成动态代理类" class="headerlink" title="生成动态代理类"></a>生成动态代理类</h3><p>与第二种类似，区别在于用CGLib 生成了代理对象。将A转化为B的时候，调用 BeanCopier#copy(A,B)<br>实际上是调用了一个具有为A转化到B<strong>量身定制get&amp;set指令</strong>的对象</p>
+<h2 id="从几个维度思考工具"><a href="#从几个维度思考工具" class="headerlink" title="从几个维度思考工具"></a>从几个维度思考工具</h2><h3 id="性能"><a href="#性能" class="headerlink" title="性能"></a>性能</h3><p>第一种性能极差，程序运行时还使用反射一般都挺差的。</p>
+<p>第二种和第三种理论上不存在性能问题，因为代码或是字节码一早生成好了。</p>
+<h3 id="可移植性"><a href="#可移植性" class="headerlink" title="可移植性"></a>可移植性</h3><p>第一种和第三种兼容Kotlin。</p>
+<p>第二种可能不支持Kotlin（猜的，因为lombok不支持），因为Kt没有调用 Annatation Processor的过程。<br><img src="https://i.loli.net/2019/03/29/5c9d7c4e1da89.png" alt="image"><br>当然肯定存在一些技巧来手动兼容一下，但是对于长远来说可能是个负担。</p>
+<h3 id="API友好度"><a href="#API友好度" class="headerlink" title="API友好度"></a>API友好度</h3><p>第一个和第三个学习成本相当。第二个有比较多的注解还有一些表达式，友好度较差。看看一个生产的例子：</p>
+<p><img src="https://i.loli.net/2019/03/29/5c9d7c4e06f29.png" alt="image"></p>
+<p>当我第一次看到这段代码的时候，内心是崩溃的。</p>
+<ol>
+<li>@Mapper ： 新同事看到这个@Mapper，还误以为是MyBatis 的，并且也是接口类。 </li>
+<li>想象在我写一大堆sourse 和 target 的时候，没有代码提示，内心慌得一批。</li>
+<li>居然还有expression这种这么神奇的操作，在字符串里写Java代码，如果代码复杂，想象不出来到时候将如何调试。</li>
+</ol>
+<h2 id="工具的通病"><a href="#工具的通病" class="headerlink" title="工具的通病"></a>工具的通病</h2><blockquote>
+<p>使用工具有一个现象就是隐藏了细节，也就是说我并不知道工具实现成什么样子。是不是就是我想要的，我如何确认？</p>
+</blockquote>
+<h3 id="一些不太合理的规矩"><a href="#一些不太合理的规矩" class="headerlink" title="一些不太合理的规矩"></a>一些不太合理的规矩</h3><p>比如这个用来转换的对象一定得有一个public NoArgsConstructor<br>，否则就转换失败。但是kotlin的data class 本身不具有这些奇奇怪怪的东西，这样导致一定得在我的代码体现这么一块为了使用工具而写的奇奇怪怪的逻辑。</p>
+<h3 id="学习成本"><a href="#学习成本" class="headerlink" title="学习成本"></a>学习成本</h3><p>对于同在一个项目组的开发，我引入了一个新的工具，这就意味着大家都得跟我一样对这个工具了如指掌。比如他面对名字相同类型不同的情况，比如他面对java.time.LocalDate/LocalTime/LocalDateTime的情况。 这个本来能够在代码体现的淋漓尽致的事情变得不可读和难以控制了。</p>
+<h3 id="做了太多的事"><a href="#做了太多的事" class="headerlink" title="做了太多的事"></a>做了太多的事</h3><p>有可能他帮我做了太多的事情，例如我只想复制一部分属性，剩下的属性由其他的规则来生成。他会把我全部属性都复制了，完了我还得设置一次新的值。一个字段的值被设置两次，如果你代码这么写，那肯定是不能容忍的。</p>
+<p>当然，你可以调用其蹩脚的API来指挥它。比如把你不需要传的字段当做字符串传给他。这里没有代码提示，写错的风险是很高的。如果20个字段有10个是要拷贝的，有10个是不要的，想想一下那个画面…我还不如手写呢。</p>
+<h3 id="当我有特殊需求的时候"><a href="#当我有特殊需求的时候" class="headerlink" title="当我有特殊需求的时候"></a>当我有特殊需求的时候</h3><p>也有可能他不能帮我做全部的事情，例如我想把一个手机号的字段隐藏后四位，我必须调用一个通用的拷贝，再设置多一次特殊的值，把这两个设置的指令分散开。但是这就违背了我想调用一个方法来帮我完成赋值的初衷了。</p>
+<p>或者你可以传入很多个自定义converter来让它变得更智能，能帮你完成一些你想让它做的事情。前提是，你得用它的协议，用它听得懂的话。那么这样带来的不仅是学习成本，还有调试成本，你根本不知道它内部如何来运营你的converter。这跟上面使用expression 带来的不友好度是一样的。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><blockquote>
+<p>隐藏这部分get&amp;set细节是没有必要的，如果你觉得它碍眼，只需要把它放到另一个类里面冷藏起来。原本我只是懒得写还有可能写错，如果我努力一点，勤奋一点，应该是可以解决的，而使用上面的工具带来的新的问题可能比旧的问题更邪恶。</p>
+</blockquote>
+<h3 id="手写"><a href="#手写" class="headerlink" title="手写"></a>手写</h3><p>本来没有问题，唯独剩下工作量还有设置遗漏的问题。</p>
+<h3 id="工具-手写"><a href="#工具-手写" class="headerlink" title="工具 + 手写"></a>工具 + 手写</h3><p>以工具为主，手写为辅。</p>
+<p>在适当的时候使用工具，在不适当的时候手写。比较友好的就是用接口类，特殊的需求使用default方法来完成设置，而不是面向注解开发。<br>一味的面向注解开发给我的感觉就像是给一个小学生身上背了一百斤的书包，感觉真是糟透了。虽然这个时候使用工具还是有学习成本等问题，但是已经好多了。</p>
+<h3 id="手写-工具"><a href="#手写-工具" class="headerlink" title="手写 + 工具"></a>手写 + 工具</h3><p>以手写为主，工具为辅。</p>
+<p>这只是一个构想，但是是本篇文章的<strong>精髓</strong>：</p>
+<p>假如有个傻瓜机器人，能够根据我的方法签名(入参和出参)生成一堆非常简单的get&amp;set指令。但是他又不帮我执行，仅仅是将代码提供给我，让我自己决定要不要用他的方案。<br>我只需将这部分代码贴进我的方法体里面，再锦上添花小修小补一下。</p>
+<ol>
+<li>一切类型不匹配的，命名不一致的这个时候都会通过IDE爆红。我能够在编译期就发现了代码的问题并改正。</li>
+<li>当只需要设置一部分属性，我可以选择不要的执行，一键删除。</li>
+<li>或者我需要一些特殊的类型转换，我可以用我的自己的代码来完成这部分事情。</li>
+<li>当我debug的时候，我可以清晰看到我写的每一句代码对结果的影响，没有任何隐喻。</li>
+<li>甚至我不用担心设置遗漏，因为这个愚蠢的机器人不会犯错。</li>
+<li>当然最完美的是我终于可以不用手写这么愚蠢的代码了，这明显就是工具应该做的事情！</li>
+</ol>
+<p><strong>总而言之，控制权还在我手上，而我又不用干活，也不用担心工具给我带来的负面影响，因为在我代码里面，体现出来的就是没有使用工具的。</strong></p>
+<p>当然这个傻瓜机器人最好的存在方式就是 Idea 插件。<br>想象一下这个使用场景，以Kotlin为例：</p>
+<ol>
+<li>我们写好了一个空方法：<br><img src="https://i.loli.net/2019/03/29/5c9d7c4d6f96f.png" alt="image"></li>
+<li>快捷键调出 Generate 面板<br><img src="https://i.loli.net/2019/03/29/5c9d7c4d8c676.png" alt="image"><br>3.选择最后的<code>Get&amp;Set Commmand</code>。傻瓜机器人根据返回值生成代码。<br><img src="https://i.loli.net/2019/03/29/5c9d7c4d95f39.png" alt="image"><br>4.修修补补一下，改正编译期错误。Perfect !!<br><img src="https://i.loli.net/2019/03/29/5c9d7c4d864a8.png" alt="image"></li>
+</ol>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/后台/" rel="tag"># 后台</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/" rel="prev" title="利用Xcode在非越狱机器上动态调试第三方APP">
+                利用Xcode在非越狱机器上动态调试第三方APP <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">视睿科技</p>
+              <p class="site-description motion-element" itemprop="description">视睿团队技术博客，包含各大技术栈知识共享、应用研究、质量与架构设计、前沿技术学习等方面。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用什么工具？"><span class="nav-number">1.</span> <span class="nav-text">用什么工具？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#反射设置类属性"><span class="nav-number">1.1.</span> <span class="nav-text">反射设置类属性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注解驱动代码生成"><span class="nav-number">1.2.</span> <span class="nav-text">注解驱动代码生成</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成动态代理类"><span class="nav-number">1.3.</span> <span class="nav-text">生成动态代理类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从几个维度思考工具"><span class="nav-number">2.</span> <span class="nav-text">从几个维度思考工具</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#性能"><span class="nav-number">2.1.</span> <span class="nav-text">性能</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可移植性"><span class="nav-number">2.2.</span> <span class="nav-text">可移植性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API友好度"><span class="nav-number">2.3.</span> <span class="nav-text">API友好度</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#工具的通病"><span class="nav-number">3.</span> <span class="nav-text">工具的通病</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#一些不太合理的规矩"><span class="nav-number">3.1.</span> <span class="nav-text">一些不太合理的规矩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#学习成本"><span class="nav-number">3.2.</span> <span class="nav-text">学习成本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做了太多的事"><span class="nav-number">3.3.</span> <span class="nav-text">做了太多的事</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当我有特殊需求的时候"><span class="nav-number">3.4.</span> <span class="nav-text">当我有特殊需求的时候</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决办法"><span class="nav-number">4.</span> <span class="nav-text">解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#手写"><span class="nav-number">4.1.</span> <span class="nav-text">手写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工具-手写"><span class="nav-number">4.2.</span> <span class="nav-text">工具 + 手写</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#手写-工具"><span class="nav-number">4.3.</span> <span class="nav-text">手写 + 工具</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">视睿</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l8zFpUKkKnP050Dd0dUFanlr-gzGzoHsz',
+        appKey: 'V72yK9it7uzFFuexBxGyztxx',
+        placeholder: '欢迎交流',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
