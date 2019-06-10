@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-seewo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-seewo.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-seewo.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="国际化,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前端 react 项目中国际化方案的选择">
+<meta name="keywords" content="国际化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端国际化方案选择">
+<meta property="og:url" content="http://yoursite.com/2019/05/29/前端国际化方案选择/index.html">
+<meta property="og:site_name" content="视睿团队技术博客">
+<meta property="og:description" content="前端 react 项目中国际化方案的选择">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/2135310-33ede5bea6cab5ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-06-10T03:06:09.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端国际化方案选择">
+<meta name="twitter:description" content="前端 react 项目中国际化方案的选择">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/2135310-33ede5bea6cab5ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/29/前端国际化方案选择/">
+
+
+
+
+
+  <title>前端国际化方案选择 | 视睿团队技术博客</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">视睿团队技术博客</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">前端，后台，移动开发，Windows，C++，AI，大数据，QA</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/前端国际化方案选择/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="视睿科技">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="视睿团队技术博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">前端国际化方案选择</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T18:51:04+08:00">
+                2019-05-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> kailunyao</span> 
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/移动开发/" itemprop="url" rel="index">
+                    <span itemprop="name">移动开发</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/05/29/前端国际化方案选择/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/29/前端国际化方案选择/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+              <div class="post-description">
+                  前端 react 项目中国际化方案的选择
+              </div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="国际化基础知识"><a href="#国际化基础知识" class="headerlink" title="国际化基础知识"></a>国际化基础知识</h2><ol>
+<li>国际化与本地化</li>
+</ol>
+<p>国际化与本地化，或者说全球化，其目的是让你的站点支持多个国家和区域。其中国际化是指功能和代码设计能处理多种语言和文化习俗，能够在创建不同语言版本时，不需要重新设计源程序代码。国际化的英文单词是 Internationalization ，简称 I18N。 本地化是将站点按照特定国家、地区或语言市场的需要进行加工，使之满足特定用户对语言和文化的特殊要求。本地化的英文是 Localization，缩写为 L10N。以 moment.js 为例，其支持 setLocale 方法切换语言相当于国际化，每一个 locale 的配置文件定义了具体区域时间格式相当于本地化。</p>
+<ol start="2">
+<li><a href="http://cldr.unicode.org/" target="_blank" rel="noopener">CLDR</a></li>
+</ol>
+<p>Unicode Common Locale Data Repository (CLDR) 是软件国际化的基石，它作为一个国际标准提供了构建国际化软件所需要的定义和数据。可参考其 <a href="https://github.com/unicode-cldr/cldr-dates-modern/blob/master/main/zh-Hans/dateFields.json" target="_blank" rel="noopener">json 形式示例</a> 形式</p>
+<ol start="3">
+<li><a href="https://www.ecma-international.org/ecma-402/1.0/" target="_blank" rel="noopener">ECMAScript Internationalization API</a></li>
+</ol>
+<p>ECMA 提供的国际化 API（底层使用了 CLDR），包括</p>
+<ul>
+<li>Intl.Collator, 排序</li>
+<li>Intl.NumberFormat, 数字的格式化</li>
+<li>Intl.DateTimeFormat, 日期的格式化</li>
+</ul>
+<p>由于兼容性原因，你还需要 <a href="https://github.com/andyearnshaw/Intl.js" target="_blank" rel="noopener">polyfill</a></p>
+<ol start="4">
+<li><a href="http://site.icu-project.org/" target="_blank" rel="noopener">ICU</a></li>
+</ol>
+<p>一套定义国际化语法的标准，仅仅是一种规范，不同语言有不同的语法，不同语法需要对应一种相应的解析方法，例如 javascript 里的一种 icu 语法，和其解析器：</p>
+<p><a href="https://github.com/messageformat/messageformat" target="_blank" rel="noopener">https://github.com/messageformat/messageformat</a> 、<a href="https://github.com/messageformat/parser" target="_blank" rel="noopener">https://github.com/messageformat/parser</a></p>
+<ol start="5">
+<li><a href="https://formatjs.io/github/" target="_blank" rel="noopener">Format.js</a></li>
+</ol>
+<blockquote>
+<p>FormatJS is a modular collection of JavaScript libraries for internationalization that are focused on formatting numbers, dates, and strings for displaying to people. It includes a set of core libraries that build on the JavaScript Intl built-ins and industry-wide i18n standards, plus a set of integrations for common template and component libraries.</p>
+</blockquote>
+<p>format.js 是一套国际化的方案（实现了上面的 3 和 4 点），包括以下一些核心库：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/2135310-33ede5bea6cab5ab.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="核心库"></p>
+<ol start="6">
+<li>po、pot、mo 三种翻译文件格式</li>
+</ol>
+<ul>
+<li>po（Portable Object）文件，是面向翻译人员的、提取于源代码的一种资源文件。当软件升级的时候，通过使用 gettext 软件包处理 po 文件，可以在一定程度上使翻译成果得以继承，减轻翻译人员的负担。文件格式示例如下：</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#: ./src/js/components/PaymentManagement/OrderFilter/index.js:69</span><br><span class="line">#: ./src/js/components/PaymentManagement/OrderFilter/index.js:67</span><br><span class="line">msgid &quot;请填写表 ID&quot;</span><br><span class="line">msgstr &quot;Please fill in the table ID&quot;</span><br><span class="line"></span><br><span class="line">#: ./src/js/utils/helper.js:382</span><br><span class="line">msgctxt &quot;数字金额&quot;</span><br><span class="line">msgid &quot;&#123;count&#125; 千万&quot;</span><br><span class="line">msgstr &quot;&#123;count&#125;0 million&quot;</span><br><span class="line"></span><br><span class="line">#: ./src/js/components/Dashboard/StatisticsPanel/API/index.js:33</span><br><span class="line">msgid &quot;&#123;count&#125; 次&quot;</span><br><span class="line">msgid_plural &quot;&#123;count&#125; 次&quot;</span><br><span class="line">msgstr[0] &quot;&#123;count&#125; time&quot;</span><br><span class="line">msgstr[1] &quot;&#123;count&#125; times&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>pot 文件，性质和 po 一样，只不过它主要用作模板</p>
+</li>
+<li><p>mo（ Machine Object）文件是面向计算机的、由 PO 文件通过 gettext 软件包编译而成的二进制文件。程序通过读取 MO 文件使自身的界面转换成用户使用的语言。|</p>
+</li>
+</ul>
+<h2 id="国际化方案"><a href="#国际化方案" class="headerlink" title="国际化方案"></a>国际化方案</h2><h3 id="方案一：react-intl"><a href="#方案一：react-intl" class="headerlink" title="方案一：react-intl"></a>方案一：react-intl</h3><p>react-intl 是基于 react 整合了 format.js 的 一套 react 国际化方案。</p>
+<blockquote>
+<p>This library provides React components and an API to format dates, numbers, and strings, including pluralization and handling translations.</p>
+</blockquote>
+<ol>
+<li><p>react-intl 提供 API 和组件两种形式方式使用:</p>
+</li>
+<li><p>加载 localeData</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import &#123;addLocaleData&#125; from &apos;react-intl&apos;;</span><br><span class="line">import frLocaleData from &apos;react-intl/locale-data/fr&apos;;</span><br><span class="line">addLocaleData(frLocaleData);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>The locale data added with this function supports plural and relative-time formatting features as described in Loading Locale Data.</p>
+</blockquote>
+<ol start="3">
+<li>Creating an I18n Context</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">ReactDOM.render( </span><br><span class="line">  &lt;IntlProvider</span><br><span class="line">    locale=&#123;usersLocale&#125;</span><br><span class="line">    messages=&#123;translationsForUsersLocale&#125;</span><br><span class="line">  &gt;</span><br><span class="line">    &lt;App/&gt;</span><br><span class="line">  &lt;/IntlProvider&gt;, </span><br><span class="line">  document.getElementById(&apos;container&apos;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p>根据 locale 加载不同的 messages 文件，messages 格式如下：</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  &quot;greeting&quot;: &quot;Hello, &#123;name&#125;&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4.格式化接口</p>
+<p>日期：</p>
+<ul>
+<li>formatDate</li>
+<li>formatTime</li>
+<li>formatRelative</li>
+</ul>
+<p>数字：</p>
+<ul>
+<li>formatNumber</li>
+<li>formatPlural（This function should only be used in apps that only need to support one language. If your app supports multiple languages use formatMessage instead.）</li>
+<li>formatNumber(1000); // “1,000”  formatNumber(0.5, {style: ‘percent’}); // “50%” - formatNumber(1000, {style: ‘currency’, currency: ‘USD’}); // $1,000</li>
+</ul>
+<p>字符串：</p>
+<ul>
+<li>formatMessage</li>
+<li>formatHTMLMessage</li>
+<li>formatMessage(messages.greeting, {name: ‘Eric’})</li>
+</ul>
+<p>复数：</p>
+<p>“Hello, {name}, you have {itemCount, plural,  =0 {no items} one { # item}  other { # items}}.”</p>
+<p>5.格式化组件</p>
+<p>如果句子中有 html 元素，推荐使用 FormattedMessage 组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;FormattedMessage </span><br><span class="line">  id=&apos;app.greeting&apos; </span><br><span class="line">   description=&apos;Greeting to welcome the user to the app&apos;  defaultMessage=&apos;Hello, &#123;name&#125;!&apos;</span><br><span class="line">   values=&#123;&#123;  name: &lt;b&gt;Eric&lt;/b&gt;  &#125;&#125;</span><br><span class="line">/&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>This allows messages to still be defined as a plain string without HTML — making it easier for it to be translated. At runtime, React will also optimize this by only re-rendering the variable parts of the message when they change. In the above example, if the user changed their name, React would only need to update the contents of the <b> element.</b></p>
+</blockquote>
+<p>6.提供 <a href="https://github.com/yahoo/babel-plugin-react-intl" target="_blank" rel="noopener">babel-plugin-react-intl</a> 插件，自动提取待翻译文本，前提需要先用 defineMessages 进行定义，同时生成的 json 无法和现有的翻译工具（需要 po 文件格式）整合（react-intl-gettext 工具可以将 json 转为 po 文件）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const messages = defineMessages(&#123; </span><br><span class="line">   greeting: &#123;</span><br><span class="line">     id: &apos;app.home.greeting&apos;,  </span><br><span class="line">     description: &apos;Message to greet the user.&apos;,  </span><br><span class="line">     defaultMessage: &apos;Hello, &#123;name&#125;!&apos;, </span><br><span class="line">   &#125;, </span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">formatMessage(&apos;app.home.greeting&apos;, &#123;name: ‘xxx’&#125;)</span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>总结</li>
+</ol>
+<ul>
+<li>提供了国际化前端转换的完整方案（即字符串、时间、日期的转换）</li>
+<li>使用麻烦，需要指定 id，而不是默认语言作为 id，比如使用 formatMessage(‘你好’)</li>
+<li>没有提供完整解决方案，即只解决了如何从翻译文件解析转换，而没有解决如何自动生成翻译文件（<a href="https://github.com/yahoo/babel-plugin-react-intl" target="_blank" rel="noopener">babel-plugin-react-intl</a> 不完善），整合使用现有的翻译工具</li>
+<li>文档和示例不完整、不清晰</li>
+</ul>
+<h3 id="方案二：使用-node-gettext-narp-构建一套完整的翻译工具链"><a href="#方案二：使用-node-gettext-narp-构建一套完整的翻译工具链" class="headerlink" title="方案二：使用 node-gettext + narp 构建一套完整的翻译工具链"></a>方案二：使用 node-gettext + narp 构建一套完整的翻译工具链</h3><ol>
+<li>使用 <a href="https://github.com/alexanderwallin/lioness" target="_blank" rel="noopener">node-gettext</a> 做为转换工具</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">import  Gettext  from  &apos;node-gettext&apos; </span><br><span class="line">import swedishTranslations from  &apos;./translations/sv-SE.json&apos;  </span><br><span class="line">const gt = new  Gettext()  gt.addTranslations(&apos;sv-SE&apos;, &apos;messages&apos;, swedishTranslations)  </span><br><span class="line">gt.setLocale(&apos;sv-SE&apos;) </span><br><span class="line">gt.gettext(&apos;The world is a funny place&apos;)</span><br></pre></td></tr></table></figure>
+<p>node-gettext 提供了字符串的转换，没有提供日期、数字的转换：</p>
+<blockquote>
+<p>GNU gettext features categories such as LC_MESSAGES, LC_NUMERIC and LC_MONETARY, but since there already is a plethora of great JavaScript libraries to deal with numbers, currencies, dates etc, node-gettext is simply targeted towards strings/phrases. You could say it just assumes the LC_MESSAGES category at all times.</p>
+</blockquote>
+<p>另外，node-gettext 接受的是 json 文件</p>
+<ol start="2">
+<li>使用 <a href="https://github.com/laget-se/narp" target="_blank" rel="noopener">narp</a> 完成翻译文本自动提取，向 poeditor 或 transifex 上传待翻译文件和拉取翻译后的文件，和格式转换等功能</li>
+</ol>
+<ul>
+<li>. narp push</li>
+</ul>
+<blockquote>
+<p>Extraction of strings from source code (react-gettext-parser),<br>Merging upstream and local translations in order to support translations in branches (pot-merge)<br>Uploading POT resources to the translation service you use (Transifex or POEditor)</p>
+</blockquote>
+<ul>
+<li>narp pull</li>
+</ul>
+<blockquote>
+<p>Download PO translations from the translation service（丢弃掉旧的，全部用最新拉取的）<br>Converting PO to JSON (gettext-parser)<br>Writing the JSON translations to where you want it</p>
+</blockquote>
+<ol start="3">
+<li>The JSON translations are formatted for node-gettext.（使用 node gettext 转换）</li>
+</ol>
+<ul>
+<li>使用 <a href="https://github.com/alexanderwallin/react-gettext-parser" target="_blank" rel="noopener">react-gettext-parser</a> 提取翻译字符串，生成 pot 文件</li>
+<li>调用 poeditor 或 transifex 平台 API 上传下载翻译文件</li>
+<li>使用 <a href="https://github.com/smhg/gettext-parser" target="_blank" rel="noopener">gettext-parser</a>  Parse and compile gettext po and mo files to/from json</li>
+</ul>
+<ol start="3">
+<li>总结：</li>
+</ol>
+<ul>
+<li>node-gettext 仅提供字符串的转换，数字和时间等，需要自己使用第三方库来实现，这个特点见仁见智，对于想一步到位的开发者而言，需要自己找第三方库，同时每个库都要单独进行 locale 配置，稍显麻烦；而对于需要定制化，或对性能要求高的开发者，则提供了一个扩展性很强的环境。</li>
+<li>node-gettext 不支持插值，需要借助第三方插件</li>
+<li>node-gettext 的语法简单通用</li>
+<li>narp 封装了 poeditor 和 transifex 两个平台的 API，通过命令行可以实现快速地上传和下载翻译文件，同时实现了文件自动合并功能，省去在多分支情况下，遇到冲突时要手动合并的麻烦</li>
+<li>目前 narp 会将不同的翻译文件合成一个 json 文件，但支持的语种和待翻译语句较多时，产生的文件会很大，严重影响性能。最好的做法还是，不同语言生成到不同文件中，初始加载默认语言，在根据当前区域，动态加载所需语言（这种情况下切换语言的话，需要刷新才能得到更新，这种需求也比较合理）。</li>
+</ul>
+<p><strong>该方案的操作实例，可以参考这里 <a href="https://github.com/YaoKaiLun/i18n-example" target="_blank" rel="noopener">https://github.com/YaoKaiLun/i18n-example</a></strong></p>
+<h3 id="方案三：i18n-next"><a href="#方案三：i18n-next" class="headerlink" title="方案三：i18n-next"></a>方案三：i18n-next</h3><p>前面的方案二，已经基本满足了我们的业务需求，而且其相对简单，容易理解。但如果你有更多的需求，或者你对国际化要求更高，那你可以尝试使用 <a href="https://github.com/i18next/i18next" target="_blank" rel="noopener">i18n-next</a>。</p>
+<blockquote>
+<p>I18next is an internationalization-framework written in and for JavaScript. But it’s much more than that.<br>i18next goes beyond just providing the standard i18n features such as (plurals, context, interpolation, format). It provides you with a complete solution to localize your product from web to mobile and desktop.</p>
+</blockquote>
+<p>它支持以下特性：</p>
+<blockquote>
+<ul>
+<li>Splitting translations into multiple files. Only load translations needed.</li>
+<li>There are plugins to detect languages for most environments (browser, native, server). This enables to set priority of where to detect and even enables to cache set languages over requests / visits.</li>
+<li>There are endless plugins to load translation from server, filesystem, … this backends also assert that loading gets retried on failure, or that a file does not get loaded twice and callbacks of success are only called once. Those backends can even provide an additional layer for local caching eg. in localStorage.</li>
+<li>Options what to load and how to fallback depending on language.</li>
+<li>Support for <a href="https://www.i18next.com/~/drafts/-LLU0VQ-n0MCsRRnS6Dp/primary/translation-function/objects-and-arrays" target="_blank" rel="noopener">objects and arrays</a></li>
+<li>Full control over management of the translations stored.</li>
+<li>Rich system of events to react on changes important to your application.</li>
+<li>Freedom of <a href="https://www.i18next.com/~/drafts/-LLU0VQ-n0MCsRRnS6Dp/primary/overview/plugins-and-utils#i-18-n-formats" target="_blank" rel="noopener">i18n formats</a> - prefer ICU? Just use i18next-icu plugin.</li>
+</ul>
+</blockquote>
+<p>同时，可以通过一些自动提取翻译语句和解析 PO 文件插件来实现方案二中 narp 的部分功能。</p>
+<p>事实上，i18n-next 在 2011 年的时候就已经创建了。i18n-next 可以说提供了一个解决国际化问题的完整生态，除了基本的需求外，你还可以通过各种扩展，实现更多功能。而且相比 react-intl，他更活跃、更友好、更可靠一点。<br> No newline at end of file</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/国际化/" rel="tag"># 国际化</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/" rel="next" title="利用Xcode在非越狱机器上动态调试第三方APP">
+                <i class="fa fa-chevron-left"></i> 利用Xcode在非越狱机器上动态调试第三方APP
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">视睿科技</p>
+              <p class="site-description motion-element" itemprop="description">视睿团队技术博客，包含各大技术栈知识共享、应用研究、质量与架构设计、前沿技术学习等方面。</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#国际化基础知识"><span class="nav-number">1.</span> <span class="nav-text">国际化基础知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#国际化方案"><span class="nav-number">2.</span> <span class="nav-text">国际化方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方案一：react-intl"><span class="nav-number">2.1.</span> <span class="nav-text">方案一：react-intl</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案二：使用-node-gettext-narp-构建一套完整的翻译工具链"><span class="nav-number">2.2.</span> <span class="nav-text">方案二：使用 node-gettext + narp 构建一套完整的翻译工具链</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方案三：i18n-next"><span class="nav-number">2.3.</span> <span class="nav-text">方案三：i18n-next</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">视睿</span>
+
+  
+</div>
+
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'l8zFpUKkKnP050Dd0dUFanlr-gzGzoHsz',
+        appKey: 'V72yK9it7uzFFuexBxGyztxx',
+        placeholder: '欢迎交流',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
