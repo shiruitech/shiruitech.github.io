@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="NexT">
+  <meta name="keywords" content="大数据,">
 
 
 
@@ -79,17 +79,27 @@
 
 
 
-<meta name="description" content="视睿团队技术博客，包含各大技术栈知识共享、应用研究、质量与架构设计、前沿技术学习等方面。">
-<meta name="keywords" content="视睿">
-<meta property="og:type" content="website">
-<meta property="og:title" content="视睿团队技术博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="Flink VS Spark Streaming数据处理模式Apache Flink是一个用于分布式流和批处理数据处理的开源平台。Flink的核心是流数据引擎，为数据流上的分布式计算提供数据分发，通信和容错，可对有限数据流和无限数据流进行有状态计算。Flink在流引擎之上构建批处理，覆盖本机迭代支持，托管内存和程序优化。  Spark Streaming是Spark的一大应用方向，它基于Spark">
+<meta name="keywords" content="大数据">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flink VS Spark Streaming">
+<meta property="og:url" content="http://yoursite.com/2019/04/30/Flink-VS-Spark-Streaming/index.html">
 <meta property="og:site_name" content="视睿团队技术博客">
-<meta property="og:description" content="视睿团队技术博客，包含各大技术栈知识共享、应用研究、质量与架构设计、前沿技术学习等方面。">
+<meta property="og:description" content="Flink VS Spark Streaming数据处理模式Apache Flink是一个用于分布式流和批处理数据处理的开源平台。Flink的核心是流数据引擎，为数据流上的分布式计算提供数据分发，通信和容错，可对有限数据流和无限数据流进行有状态计算。Flink在流引擎之上构建批处理，覆盖本机迭代支持，托管内存和程序优化。  Spark Streaming是Spark的一大应用方向，它基于Spark">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2ieg9vt4ij32h80tagyr.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2iegj6hm4j30tr06nwer.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2iekzv9y0j31c20j27cv.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2ieh9ret6j30ub0asab5.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2ielegojwj30ue0d2n1w.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.in/large/006tNc79gy1g2iehja1eqj30rm0aswex.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2iehny482j30j00e5tao.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.in/large/006tNc79gy1g2iehqmgzkj30sm0lrtcq.jpg">
+<meta property="og:updated_time" content="2019-06-10T03:51:05.415Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="视睿团队技术博客">
-<meta name="twitter:description" content="视睿团队技术博客，包含各大技术栈知识共享、应用研究、质量与架构设计、前沿技术学习等方面。">
+<meta name="twitter:title" content="Flink VS Spark Streaming">
+<meta name="twitter:description" content="Flink VS Spark Streaming数据处理模式Apache Flink是一个用于分布式流和批处理数据处理的开源平台。Flink的核心是流数据引擎，为数据流上的分布式计算提供数据分发，通信和容错，可对有限数据流和无限数据流进行有状态计算。Flink在流引擎之上构建批处理，覆盖本机迭代支持，托管内存和程序优化。  Spark Streaming是Spark的一大应用方向，它基于Spark">
+<meta name="twitter:image" content="https://ws1.sinaimg.in/large/006tNc79gy1g2ieg9vt4ij32h80tagyr.jpg">
 
 
 
@@ -119,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/04/30/Flink-VS-Spark-Streaming/">
 
 
 
 
 
-  <title>视睿团队技术博客</title>
+  <title>Flink VS Spark Streaming | 视睿团队技术博客</title>
   
 
 
@@ -144,8 +154,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -248,168 +257,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/29/前端国际化方案选择/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="视睿科技">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="视睿团队技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/29/前端国际化方案选择/" itemprop="url">前端国际化方案选择</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-29T18:51:04+08:00">
-                2019-05-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> kailunyao</span> 
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/29/前端国际化方案选择/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/29/前端国际化方案选择/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          前端 react 项目中国际化方案的选择
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/29/前端国际化方案选择/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -439,9 +289,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/30/Flink-VS-Spark-Streaming/" itemprop="url">Flink VS Spark Streaming</a></h1>
+          <h1 class="post-title" itemprop="name headline">Flink VS Spark Streaming</h1>
         
 
         <div class="post-meta">
@@ -526,9 +374,7 @@
       
 
       
-        
-          
-            <h1 id="Flink-VS-Spark-Streaming"><a href="#Flink-VS-Spark-Streaming" class="headerlink" title="Flink VS Spark Streaming"></a>Flink VS Spark Streaming</h1><h2 id="数据处理模式"><a href="#数据处理模式" class="headerlink" title="数据处理模式"></a>数据处理模式</h2><p>Apache Flink是一个用于分布式流和批处理数据处理的开源平台。Flink的核心是<strong>流数据引擎</strong>，为数据流上的分布式计算提供数据分发，通信和容错，可对有限数据流和无限数据流进行有状态计算。Flink在流引擎之上构建批处理，覆盖本机迭代支持，托管内存和程序优化。</p>
+        <h1 id="Flink-VS-Spark-Streaming"><a href="#Flink-VS-Spark-Streaming" class="headerlink" title="Flink VS Spark Streaming"></a>Flink VS Spark Streaming</h1><h2 id="数据处理模式"><a href="#数据处理模式" class="headerlink" title="数据处理模式"></a>数据处理模式</h2><p>Apache Flink是一个用于分布式流和批处理数据处理的开源平台。Flink的核心是<strong>流数据引擎</strong>，为数据流上的分布式计算提供数据分发，通信和容错，可对有限数据流和无限数据流进行有状态计算。Flink在流引擎之上构建批处理，覆盖本机迭代支持，托管内存和程序优化。</p>
 <p><img src="https://ws1.sinaimg.in/large/006tNc79gy1g2ieg9vt4ij32h80tagyr.jpg" alt="img"></p>
 <p>Spark Streaming是Spark的一大应用方向，它基于Spark高效的批处理能力，对流数据划分为多个小批数据，再分别对这些数据进行处理，即<strong>微批处理模式</strong>，运行的时候需要指定批处理的时间，每次运行job时处理一个批次的数据。</p>
 <p><img src="https://ws1.sinaimg.in/large/006tNc79gy1g2iegj6hm4j30tr06nwer.jpg" alt="Spark Streaming"></p>
@@ -800,8 +646,6 @@
 <p>目前spark针对流式计算处理的发展也在借鉴flink的一些设计思路，例如spark 2.0 引入的Structured Streaming，不过micro batch的执行方式依然存在一些局限性，特别在数据量达到一定规模时会有性能的问题。</p>
 <p>二者都有各自擅长的应用方向，需要根据场景和应用方向来合理选择工具。</p>
 
-          
-        
       
     </div>
     
@@ -816,332 +660,40 @@
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/29/lstm/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="视睿科技">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="视睿团队技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/29/lstm/" itemprop="url">Long Short-Term Memory</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-29T18:51:04+08:00">
-                2019-04-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> ml_hhy</span> 
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数据挖掘/" itemprop="url" rel="index">
-                    <span itemprop="name">数据挖掘</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
           
-
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/29/lstm/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/29/lstm/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          介绍LSTM相关知识
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/29/lstm/">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/29/lstm/" rel="next" title="Long Short-Term Memory">
+                <i class="fa fa-chevron-left"></i> Long Short-Term Memory
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="视睿科技">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="视睿团队技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/" itemprop="url">利用Xcode在非越狱机器上动态调试第三方APP</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T10:54:52+08:00">
-                2019-03-29
-              </time>
+              <a href="/2019/05/29/前端国际化方案选择/" rel="prev" title="前端国际化方案选择">
+                前端国际化方案选择 <i class="fa fa-chevron-right"></i>
+              </a>
             
-
-            
-
-            
-          </span>
-
-          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> 郭秀才</span> 
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/移动开发/" itemprop="url" rel="index">
-                    <span itemprop="name">移动开发</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          Reveal是一款分析任意App视图结构的利器，除此之外，无需越狱，利用Xcode也可以在非越狱机器上动态调试第三方APP。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/29/利用Xcode在非越狱机器上动态调试第三方APP/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -1151,169 +703,11 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/29/对象属性拷贝工具的选择/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="视睿科技">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="视睿团队技术博客">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/29/对象属性拷贝工具的选择/" itemprop="url">对象属性拷贝工具的选择</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-29T09:14:07+08:00">
-                2019-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          <span> ｜ </span><span class="fa fa-user-o"> </span><span style="color:#222;"> 鸡杂王</span> 
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/后台/" itemprop="url" rel="index">
-                    <span itemprop="name">后台</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/03/29/对象属性拷贝工具的选择/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/03/29/对象属性拷贝工具的选择/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          日常开发中，我们经常会把一个Po转化为一个Dto，或者把一个Dto转化为Po。如果类属性多了，很容易写错和写漏，而且也很烦。我们急需工具来帮助我们省去这部分开发量。
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/03/29/对象属性拷贝工具的选择/">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
@@ -1321,6 +715,13 @@
 
 
           
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
 
         </div>
         
@@ -1341,8 +742,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1402,6 +812,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Flink-VS-Spark-Streaming"><span class="nav-number">1.</span> <span class="nav-text">Flink VS Spark Streaming</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据处理模式"><span class="nav-number">1.1.</span> <span class="nav-text">数据处理模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行时结构"><span class="nav-number">1.2.</span> <span class="nav-text">运行时结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编程模型"><span class="nav-number">1.3.</span> <span class="nav-text">编程模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Flink编程模型"><span class="nav-number">1.3.1.</span> <span class="nav-text">Flink编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark-Streaming编程模型"><span class="nav-number">1.3.2.</span> <span class="nav-text">Spark Streaming编程模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#API"><span class="nav-number">1.3.3.</span> <span class="nav-text">API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Streaming处理特性"><span class="nav-number">1.4.</span> <span class="nav-text">Streaming处理特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#对Time的支持"><span class="nav-number">1.4.1.</span> <span class="nav-text">对Time的支持</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#对Window的支持"><span class="nav-number">1.4.2.</span> <span class="nav-text">对Window的支持</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生态集成"><span class="nav-number">1.5.</span> <span class="nav-text">生态集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">1.6.</span> <span class="nav-text">总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1529,6 +955,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
